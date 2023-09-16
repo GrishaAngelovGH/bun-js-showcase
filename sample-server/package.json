@@ -1,7 +1,11 @@
 {
   "name": "sample-server",
-  "module": "index.ts",
+  "module": "server.ts",
   "type": "module",
+  "scripts": {
+    "server": "bun --watch server.ts",
+    "client": "bun client.ts"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },

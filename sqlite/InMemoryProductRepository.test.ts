@@ -15,4 +15,11 @@ describe('Product Repository', () => {
     const id = productRepository.create(product)
     expect(id).toBe(1)
   })
+
+  test('find product by id', () => {
+    const product = new ProductItem('apples', 1.99)
+    const id = productRepository.create(product)
+    const actual = productRepository.findById(id)
+    expect(actual).toEqual(product)
+  })
 })

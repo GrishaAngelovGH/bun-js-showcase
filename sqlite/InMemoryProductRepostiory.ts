@@ -28,7 +28,9 @@ class InMemoryProductRepository implements ProductRepository {
   }
 
   findById(id: number): Product {
-    throw new Error('Method not implemented.')
+    return this.db
+      .prepare(`SELECT name, price FROM products WHERE id = ${id}`)
+      .get() as Product
   }
 
   update(id: number, newProduct: Product): void {

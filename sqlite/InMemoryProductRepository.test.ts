@@ -35,4 +35,13 @@ describe('Product Repository', () => {
 
     expect(actual).toEqual(updatedProduct)
   })
+
+  test('delete product', () => {
+    const product = new ProductItem('apples', 1.99)
+    const id = productRepository.create(product)
+    productRepository.delete(id)
+    const actual = productRepository.findById(id)
+
+    expect(actual).toBe(null)
+  })
 })

@@ -42,7 +42,11 @@ class InMemoryProductRepository implements ProductRepository {
   }
 
   delete(id: number): void {
-    throw new Error('Method not implemented.')
+    this.db
+      .prepare(
+        'DELETE FROM products WHERE id = ?',
+        [id]
+      ).run()
   }
 }
 

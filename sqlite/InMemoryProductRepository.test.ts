@@ -13,6 +13,7 @@ describe('Product Repository', () => {
   test('create new product', () => {
     const product = new ProductItem('apples', 1.99)
     const id = productRepository.create(product)
+
     expect(id).toBe(1)
   })
 
@@ -20,6 +21,18 @@ describe('Product Repository', () => {
     const product = new ProductItem('apples', 1.99)
     const id = productRepository.create(product)
     const actual = productRepository.findById(id)
+
     expect(actual).toEqual(product)
+  })
+
+  test('update product', () => {
+    const product = new ProductItem('apples', 1.99)
+    const updatedProduct = new ProductItem('apples', 1.50)
+
+    const id = productRepository.create(product)
+    productRepository.update(id, updatedProduct)
+    const actual = productRepository.findById(id)
+
+    expect(actual).toEqual(updatedProduct)
   })
 })

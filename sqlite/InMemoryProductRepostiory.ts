@@ -34,7 +34,11 @@ class InMemoryProductRepository implements ProductRepository {
   }
 
   update(id: number, newProduct: Product): void {
-    throw new Error('Method not implemented.')
+    this.db
+      .prepare(
+        'UPDATE products SET name = ?, price = ? WHERE id = ?',
+        [newProduct.name, newProduct.price, id]
+      ).run()
   }
 
   delete(id: number): void {
